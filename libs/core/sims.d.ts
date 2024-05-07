@@ -14,6 +14,36 @@ declare namespace hare {
     function onLand(handler: (height: number, more: number, most: number) => void): void;
 
 }
+declare namespace custom {
+    /**
+     * This is move
+     */
+    //% blockId="moveTo" block="moveTo %x  %y "
+    //% shim=custom::moveTo
+    function moveTo(x: number, y: number): void;
+
+    /**
+     * This is click
+     */
+    //% blockId="click" block="click "
+    //% shim=custom::click
+    function click(): void;
+
+    /**
+     * This is input
+     */
+    //% blockId="input" block="input %x"
+    //% shim=custom::input
+    function input(x: string): void;
+
+    /**
+     * This is enter
+     */
+    //% blockId="enter" block="enter"
+    //% shim=custom::enter
+    function enter(): void;
+
+}
 declare namespace turtle {
     /**
      * Moves the sprite forward

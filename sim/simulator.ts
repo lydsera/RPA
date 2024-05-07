@@ -11,7 +11,7 @@ namespace pxsim {
     /**
      * Gets the current 'board', eg. program state.
      */
-    export function board() : Board {
+    export function board(): Board {
         return runtime.board as Board;
     }
 
@@ -20,12 +20,12 @@ namespace pxsim {
      * Do not store state anywhere else!
      */
     export class Board extends pxsim.BaseBoard {
-        public element : SVGSVGElement;
+        public element: SVGSVGElement;
         public spriteElement: SVGCircleElement;
         public hareElement: SVGCircleElement;
-        public sprite : Sprite;
+        public sprite: Sprite;
         public hare: Sprite;
-        
+
         constructor() {
             super();
             this.element = <SVGSVGElement><any>document.getElementById('svgcanvas');
@@ -34,14 +34,14 @@ namespace pxsim {
             this.sprite = new Sprite()
             this.hare = new Sprite();
         }
-        
+
         initAsync(msg: pxsim.SimulatorRunMessage): Promise<void> {
             document.body.innerHTML = ''; // clear children
             document.body.appendChild(this.element);
 
             return Promise.resolve();
-        }       
-        
+        }
+
         updateView() {
             this.spriteElement.cx.baseVal.value = this.sprite.x;
             this.spriteElement.cy.baseVal.value = this.sprite.y;

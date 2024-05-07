@@ -26,6 +26,54 @@ namespace pxsim.hare {
     }
 }
 
+namespace pxsim.custom {
+
+
+    /**
+     * This is move
+     */
+    //% blockId="moveTo" block="moveTo %x  %y "
+    export function moveTo(x: number, y: number): void {
+        // 首先，检查是否支持模拟鼠标移动
+
+        window.parent.postMessage(x + "=move=" + y, "*");
+    }
+
+    /**
+     * This is click
+     */
+    //% blockId="click" block="click "
+    export function click(): void {
+        // 首先，检查是否支持模拟鼠标移动
+
+        window.parent.postMessage("=click=", "*");
+    }
+
+
+    /**
+     * This is input
+     */
+    //% blockId="input" block="input %x"
+    export function input(x: string): void {
+        // 首先，检查是否支持模拟鼠标移动
+
+        window.parent.postMessage(x + "=input=", "*");
+    }
+
+    /**
+     * This is enter
+     */
+    //% blockId="enter" block="enter"
+    export function enter(): void {
+        // 首先，检查是否支持模拟鼠标移动
+
+        window.parent.postMessage("=enter=", "*");
+    }
+
+
+}
+
+
 namespace pxsim.turtle {
     /**
      * Moves the sprite forward
@@ -90,14 +138,14 @@ namespace pxsim.loops {
     }
 }
 
-function logMsg(m:string) { console.log(m) }
+function logMsg(m: string) { console.log(m) }
 
 namespace pxsim.console {
     /**
      * Print out message
      */
     //% 
-    export function log(msg:string) {
+    export function log(msg: string) {
         logMsg("CONSOLE: " + msg)
         // why doesn't that work?
         board().writeSerial(msg + "\n")
@@ -115,17 +163,17 @@ namespace pxsim {
          */
         //%
         public x = 100;
-         /**
-         * The Y-coordiante
-         */
+        /**
+        * The Y-coordiante
+        */
         //%
         public y = 100;
         public angle = 90;
-        
+
         constructor() {
         }
-        
-        private foobar() {}
+
+        private foobar() { }
 
         /**
          * Move the thing forward
@@ -144,6 +192,9 @@ namespace pxsim {
         }
     }
 }
+
+
+
 
 namespace pxsim.sprites {
     /**
