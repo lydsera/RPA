@@ -53,7 +53,7 @@ namespace pxsim.custom {
     /**
      * This is input
      */
-    //% blockId="input" block="input %x"
+    //% blockId="input" block="input %x" color=#FFF609
     export function input(x: string): void {
         // 首先，检查是否支持模拟鼠标移动
 
@@ -73,24 +73,62 @@ namespace pxsim.custom {
     /**
      * This is toggleDown
      */
-    //% blockId="toggleDown" block="toggleDown"
+    //% blockId="toggleDown" block="toggleDown" color=#A4839F
     export function toggleDown(): void {
 
         window.parent.postMessage("=toggleDown=", "*");
     }
 
     /**
-     * This is get
+     * This is getLineFromFile
      */
-    //% blockId="get" block="get"
-    export function get(): string {
-        window.addEventListener("message", function (event) {
-            if (typeof event.data === 'string') {
-                return event.data
-            }
-            else return null
-        }, false);
+    //% blockId="getLineFromFile" block="get line %x from file %y" color=#91463D
+    export function getLineFromFile(x:number, y:string): string {
+
         return null
+    }
+
+    /**
+     * This is openfile
+     */
+    //% blockId="openfile" block="OpenFile %x" color=#E5CDC4
+    export function openfile(x:string) {
+        window.parent.postMessage(x+"=openFile=", "*");
+    }
+
+    /**
+     * This is tap
+     */
+    //% blockId="tap" block="Tap %x" color=#5C406C
+    export function tap(x:string){
+        window.parent.postMessage(x+"=tap=", "*");
+    }
+
+    /**
+     * This is double tap
+     */
+    //% blockId="doubletap" block="doubleTap %x %y" color=#8E2EC4
+    export function doubletap(x:string,y:string){
+        window.parent.postMessage(x+"=doubletap="+y, "*");
+    }
+
+    /**
+     * This is string
+     */
+    //% blockId="string" block="%x" 
+    export function getString(x:string):string{
+        return x;
+    }
+
+    /**
+     * This is comparison
+     */
+    //% blockId="comparison null" block="%x != null" color=#87F2FF
+    export function comparisonNull(x:string):boolean{
+        if (x==null){
+            return true
+        }
+        else return false
     }
 
 }
@@ -166,7 +204,7 @@ namespace pxsim.console {
     /**
      * Print out message
      */
-    //% 
+    //% blockId=log block="log %msg"
     export function log(msg: string) {
         logMsg("CONSOLE: " + msg)
         // why doesn't that work?

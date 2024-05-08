@@ -1,7 +1,6 @@
 // 引入 RobotJS 库
 const robot = require('robotjs');
-
-
+const {spawn} = require('child_process')
 
 const express = require('express');
 const http = require('http');
@@ -42,6 +41,20 @@ io.on('connection', (socket) => {
             robot.mouseClick()
             robot.keyTap("down")
             robot.keyTap("down")
+        }
+        else if(msg.indexOf("=tap=")>-1){ 
+            let temp=msg.split("=tap=")
+            robot.keyTap(temp[0]);
+        }
+        else if(msg.indexOf("=doubletap=")>-1){ 
+            let temp=msg.split("=doubletap=")
+            robot.keyTap(temp[0],temp[1]);
+        }
+        else if(msg.indexOf("=openFile=")>-1){
+            let args=msg.split("=openFile=")
+            let pythonProcess = spawn('python', ['openfile.py'], { stdio: 'pipe' });
+            pythonProcess.stdin.write(JSON.stringify(args));
+            pythonProcess.stdin.end();
         }
         
     });

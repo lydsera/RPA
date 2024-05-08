@@ -32,7 +32,7 @@ declare namespace custom {
     /**
      * This is input
      */
-    //% blockId="input" block="input %x"
+    //% blockId="input" block="input %x" color=#FFF609
     //% shim=custom::input
     function input(x: string): void;
 
@@ -46,16 +46,51 @@ declare namespace custom {
     /**
      * This is toggleDown
      */
-    //% blockId="toggleDown" block="toggleDown"
+    //% blockId="toggleDown" block="toggleDown" color=#A4839F
     //% shim=custom::toggleDown
     function toggleDown(): void;
 
     /**
-     * This is get
+     * This is getLineFromFile
      */
-    //% blockId="get" block="get"
-    //% shim=custom::get
-    function get(): string;
+    //% blockId="getLineFromFile" block="get line %x from file %y" color=#91463D
+    //% shim=custom::getLineFromFile
+    function getLineFromFile(x: number, y: string): string;
+
+    /**
+     * This is openfile
+     */
+    //% blockId="openfile" block="OpenFile %x" color=#E5CDC4
+    //% shim=custom::openfile
+    function openfile(x: string): void;
+
+    /**
+     * This is tap
+     */
+    //% blockId="tap" block="Tap %x" color=#5C406C
+    //% shim=custom::tap
+    function tap(x: string): void;
+
+    /**
+     * This is double tap
+     */
+    //% blockId="doubletap" block="doubleTap %x %y" color=#8E2EC4
+    //% shim=custom::doubletap
+    function doubletap(x: string, y: string): void;
+
+    /**
+     * This is string
+     */
+    //% blockId="string" block="%x"
+    //% shim=custom::getString
+    function getString(x: string): string;
+
+    /**
+     * This is comparison
+     */
+    //% blockId="comparison null" block="%x != null" color=#87F2FF
+    //% shim=custom::comparisonNull
+    function comparisonNull(x: string): boolean;
 
 }
 declare namespace turtle {
@@ -112,7 +147,7 @@ declare namespace console {
     /**
      * Print out message
      */
-    //%
+    //% blockId=log block="log %msg"
     //% shim=console::log
     function log(msg: string): void;
 
