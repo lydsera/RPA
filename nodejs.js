@@ -33,19 +33,37 @@ io.on('connection', (socket) => {
             robot.mouseClick()
         }else if(msg.indexOf("=input=")>-1){
             let temp=msg.split("=input=")
-            robot.mouseClick()
             robot.typeString(temp[0]);
         }else if(msg.indexOf("=enter=")>-1){ 
             robot.setKeyboardDelay(1500);
             robot.keyTap("enter");
         }
-
+        else if(msg.indexOf("=toggleDown=")>-1){ 
+            robot.mouseClick()
+            robot.keyTap("down")
+            robot.keyTap("down")
+        }
+        
     });
 
     socket.on('disconnect', () => {
         console.log('User disconnected');
     });
 });
+
+const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+
+async function toggleDown()
+{
+    let pos=robot.getMousePos()
+    robot.mouseToggle("down","middle")
+    robot.moveMouse(pos.x,pos.y+50)
+    await sleep(1000)
+    robot.mouseToggle("up","middle")
+    robot.moveMouse(pos.x,pos.y)
+    
+    
+}
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {

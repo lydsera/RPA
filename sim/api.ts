@@ -70,6 +70,28 @@ namespace pxsim.custom {
         window.parent.postMessage("=enter=", "*");
     }
 
+    /**
+     * This is toggleDown
+     */
+    //% blockId="toggleDown" block="toggleDown"
+    export function toggleDown(): void {
+
+        window.parent.postMessage("=toggleDown=", "*");
+    }
+
+    /**
+     * This is get
+     */
+    //% blockId="get" block="get"
+    export function get(): string {
+        window.addEventListener("message", function (event) {
+            if (typeof event.data === 'string') {
+                return event.data
+            }
+            else return null
+        }, false);
+        return null
+    }
 
 }
 

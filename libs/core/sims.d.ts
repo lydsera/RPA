@@ -43,6 +43,20 @@ declare namespace custom {
     //% shim=custom::enter
     function enter(): void;
 
+    /**
+     * This is toggleDown
+     */
+    //% blockId="toggleDown" block="toggleDown"
+    //% shim=custom::toggleDown
+    function toggleDown(): void;
+
+    /**
+     * This is get
+     */
+    //% blockId="get" block="get"
+    //% shim=custom::get
+    function get(): string;
+
 }
 declare namespace turtle {
     /**
