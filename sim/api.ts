@@ -26,13 +26,14 @@ namespace pxsim.hare {
     }
 }
 
-namespace pxsim.custom {
+//% color="#FF2121" weight=100
+namespace pxsim.rpa {
 
 
     /**
      * This is move
      */
-    //% blockId="moveTo" block="moveTo %x  %y "
+    //% blockId="moveTo" block="moveTo %x  %y" color="#FF93C4" 
     export function moveTo(x: number, y: number): void {
         // 首先，检查是否支持模拟鼠标移动
 
@@ -42,7 +43,7 @@ namespace pxsim.custom {
     /**
      * This is click
      */
-    //% blockId="click" block="click "
+    //% blockId="click" block="click" color="#FF8135"
     export function click(): void {
         // 首先，检查是否支持模拟鼠标移动
 
@@ -53,21 +54,41 @@ namespace pxsim.custom {
     /**
      * This is input
      */
-    //% blockId="input" block="input %x" color=#FFF609
+    //% blockId="input" block="input %x" color="#FFF609"
     export function input(x: string): void {
         // 首先，检查是否支持模拟鼠标移动
-
+        if(x==null) return;
         window.parent.postMessage(x + "=input=", "*");
     }
 
     /**
      * This is enter
      */
-    //% blockId="enter" block="enter"
+    //% blockId="enter" block="enter" color="#249CA3"
     export function enter(): void {
         // 首先，检查是否支持模拟鼠标移动
 
         window.parent.postMessage("=enter=", "*");
+    }
+
+    //% block="getInputxPos" color="#78DC52"
+    export function getInputxPos():number {
+        return 0;
+    }
+
+    //% block="getInputyPos" color="#78DC52"
+    export function getInputyPos():number {
+        return 0;
+    }
+
+    //% block="getScreenSizex" color="#5C406C"
+    export function getScreenSizex():number {
+        return 0;
+    }
+
+    //% block="getScreenSizey" color="#5C406C"
+    export function getScreenSizey():number {
+        return 0;
     }
 
     /**
@@ -84,7 +105,7 @@ namespace pxsim.custom {
      */
     //% blockId="getLineFromFile" block="get line %x from file %y" color=#91463D
     export function getLineFromFile(x:number, y:string): string {
-
+        window.parent.postMessage(x+"=getLineFromFile="+y, "*");
         return null
     }
 
@@ -94,6 +115,14 @@ namespace pxsim.custom {
     //% blockId="openfile" block="OpenFile %x" color=#E5CDC4
     export function openfile(x:string) {
         window.parent.postMessage(x+"=openFile=", "*");
+    }
+
+    /**
+     * This is openURL
+     */
+    //% blockId="openURL" block="openURL %url" color=#E5CDC4
+    export function openURL(url:string) {
+        window.parent.postMessage(url+"=openURL=", "*");
     }
 
     /**
@@ -126,9 +155,9 @@ namespace pxsim.custom {
     //% blockId="comparison null" block="%x != null" color=#87F2FF
     export function comparisonNull(x:string):boolean{
         if (x==null){
-            return true
+            return false
         }
-        else return false
+        else return true
     }
 
 }

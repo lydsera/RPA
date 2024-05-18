@@ -14,82 +14,105 @@ declare namespace hare {
     function onLand(handler: (height: number, more: number, most: number) => void): void;
 
 }
-declare namespace custom {
+declare namespace rpa {
     /**
      * This is move
      */
-    //% blockId="moveTo" block="moveTo %x  %y "
-    //% shim=custom::moveTo
+    //% blockId="moveTo" block="moveTo %x  %y" color="#FF93C4"
+    //% shim=rpa::moveTo
     function moveTo(x: number, y: number): void;
 
     /**
      * This is click
      */
-    //% blockId="click" block="click "
-    //% shim=custom::click
+    //% blockId="click" block="click" color="#FF8135"
+    //% shim=rpa::click
     function click(): void;
 
     /**
      * This is input
      */
-    //% blockId="input" block="input %x" color=#FFF609
-    //% shim=custom::input
+    //% blockId="input" block="input %x" color="#FFF609"
+    //% shim=rpa::input
     function input(x: string): void;
 
     /**
      * This is enter
      */
-    //% blockId="enter" block="enter"
-    //% shim=custom::enter
+    //% blockId="enter" block="enter" color="#249CA3"
+    //% shim=rpa::enter
     function enter(): void;
+
+    //% block="getInputxPos" color="#78DC52"
+    //% shim=rpa::getInputxPos
+    function getInputxPos(): number;
+
+    //% block="getInputyPos" color="#78DC52"
+    //% shim=rpa::getInputyPos
+    function getInputyPos(): number;
+
+    //% block="getScreenSizex" color="#5C406C"
+    //% shim=rpa::getScreenSizex
+    function getScreenSizex(): number;
+
+    //% block="getScreenSizey" color="#5C406C"
+    //% shim=rpa::getScreenSizey
+    function getScreenSizey(): number;
 
     /**
      * This is toggleDown
      */
     //% blockId="toggleDown" block="toggleDown" color=#A4839F
-    //% shim=custom::toggleDown
+    //% shim=rpa::toggleDown
     function toggleDown(): void;
 
     /**
      * This is getLineFromFile
      */
     //% blockId="getLineFromFile" block="get line %x from file %y" color=#91463D
-    //% shim=custom::getLineFromFile
+    //% shim=rpa::getLineFromFile
     function getLineFromFile(x: number, y: string): string;
 
     /**
      * This is openfile
      */
     //% blockId="openfile" block="OpenFile %x" color=#E5CDC4
-    //% shim=custom::openfile
+    //% shim=rpa::openfile
     function openfile(x: string): void;
+
+    /**
+     * This is openURL
+     */
+    //% blockId="openURL" block="openURL %url" color=#E5CDC4
+    //% shim=rpa::openURL
+    function openURL(url: string): void;
 
     /**
      * This is tap
      */
     //% blockId="tap" block="Tap %x" color=#5C406C
-    //% shim=custom::tap
+    //% shim=rpa::tap
     function tap(x: string): void;
 
     /**
      * This is double tap
      */
     //% blockId="doubletap" block="doubleTap %x %y" color=#8E2EC4
-    //% shim=custom::doubletap
+    //% shim=rpa::doubletap
     function doubletap(x: string, y: string): void;
 
     /**
      * This is string
      */
     //% blockId="string" block="%x"
-    //% shim=custom::getString
+    //% shim=rpa::getString
     function getString(x: string): string;
 
     /**
      * This is comparison
      */
     //% blockId="comparison null" block="%x != null" color=#87F2FF
-    //% shim=custom::comparisonNull
+    //% shim=rpa::comparisonNull
     function comparisonNull(x: string): boolean;
 
 }

@@ -1,6 +1,6 @@
 // 引入 RobotJS 库
 const robot = require('robotjs');
-const {spawn} = require('child_process')
+const {spawn,exec} = require('child_process')
 
 const express = require('express');
 const http = require('http');
@@ -8,6 +8,14 @@ const socketIo = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
+
+var open = function(url,browserName){
+    exec('start '+browserName+' '+url,function(err,stdout,stderr){
+    if(err){
+    console.log(err)
+    }
+})
+}
 
 // 配置 socket.io 以允许跨域
 const io = socketIo(server, {
@@ -56,6 +64,33 @@ io.on('connection', (socket) => {
             pythonProcess.stdin.write(JSON.stringify(args));
             pythonProcess.stdin.end();
         }
+        else if(msg.indexOf("=openURL=")>-1){
+            console.log(1)
+            let args=msg.split("=openURL=")
+            // console.log(args[0])
+            open(args[0],"msedge")
+        }
+        else if(msg.indexOf("=getLineFromFile=")){
+            console.log(2)
+            let temp=msg.split("=getLineFromFile=")
+            let fs=require('fs')
+            // 读取文件
+            setTimeout(() => {
+                fs.readFile(temp[1], 'utf8', (err, data) => {
+                  if (err) {
+                  console.error('读取文件出错:', err);
+                  return;
+                  }
+                  // 将文件内容拆分成行数组
+                  const lines = data.split(/\r?\n/);
+                  for (let index = temp[0]; lines[index]!=null; index++) {
+                      robot.typeString(lines[index])
+                      robot.keyTap('tab')
+                  }                
+                });
+              }, 2000);
+        }
+        
         
     });
 
